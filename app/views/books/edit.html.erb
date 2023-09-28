@@ -3,6 +3,15 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
 
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %> error occurred
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @book do |f| %>
 
         <div class="form-group">
@@ -21,9 +30,9 @@
 
         <table>
         <tr>
-          <td><%= link_to "show", book_path %></td>
+          <td><%= link_to "Show", book_path %></td>
           <td>|</td>
-          <td><%= link_to "back", books_path %></td>
+          <td><%= link_to "Back", books_path %></td>
         </tr>
         </table>
 
